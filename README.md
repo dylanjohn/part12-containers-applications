@@ -1,6 +1,6 @@
 # Part 12 - Containers
 
-Solutions for University of Helsinki Full Stack Open Part 12, focusing on containerising applications with Docker and creating immutable execution environments.
+Solutions for University of Helsinki Full Stack Open Part 12, focusing on containerizing applications with Docker and creating immutable execution environments.
 
 ## Topics
 
