@@ -1,0 +1,9 @@
+services:
+  app:
+    image: express-server
+    build: .
+    ports:
+      - 3000:3000
+    restart: unless-stopped  # This one's really useful
+    environment:
+      - NODE_ENV=production

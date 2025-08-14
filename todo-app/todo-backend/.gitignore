@@ -56,6 +56,15 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.local
+.env.*.local
 
 # next.js build output
 .next
+
+# MongoDB data (if using bind mount)
+mongo_data/
+
+# Docker volumes and data
+data/
+volumes/
