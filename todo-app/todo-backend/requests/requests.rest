@@ -6,3 +6,27 @@ Content-Type: application/json
   "text": "Updated todo text",
   "done": true
 }
+
+### Add a new todo (POST)
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+  "text": "Learn Redis with Docker"
+}
+
+### Add another todo (POST)
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+  "text": "Complete Exercise 12.10"
+}
+
+### Add yet another todo (POST)
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+  "text": "Master container orchestration"
+}

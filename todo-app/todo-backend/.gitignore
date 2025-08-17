@@ -64,6 +64,7 @@ typings/
 
 # MongoDB data (if using bind mount)
 mongo_data/
+redis_data/
 
 # Docker volumes and data
 data/
