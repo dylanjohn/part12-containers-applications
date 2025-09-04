@@ -15,7 +15,7 @@ services:
       - ./todo-backend/redis_data:/data
       
   server:
-    image: todo-backend-dev 
+    image: todo-backend-dev
     volumes:
       - ./todo-backend:/usr/src/app
       - /usr/src/app/node_module
