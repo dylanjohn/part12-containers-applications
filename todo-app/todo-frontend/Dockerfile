@@ -5,15 +5,15 @@ RUN npm ci
 
 FROM dependencies AS test-stage
 COPY . .
-# Run tests - remove the Jest-specific flags since you're using Vitest
+# Run tests
 RUN npm run test
 # Create a marker file to prove tests passed
 RUN echo "tests-passed-$(date)" > test-results.txt
 
 FROM test-stage AS build-stage
-# The code is already copied from test-stage
+
 # Set the backend URL environment variable before building
-ENV VITE_BACKEND_URL=http://localhost:3001
+ENV VITE_BACKEND_URL=http://localhost/api
 RUN npm run build
 
 FROM nginx:1.25-alpine

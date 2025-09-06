@@ -15,30 +15,27 @@ services:
       - ./todo-backend/redis_data:/data
       
   server:
-    image: todo-backend-dev
-    volumes:
-      - ./todo-backend:/usr/src/app
-      - /usr/src/app/node_module
+    image: todo-backend-prod 
     environment:
       - REDIS_URL=redis://redis:6379
       - MONGO_URL=mongodb://root:example@mongo:27017/the_database?authSource=admin
+      - NODE_ENV=production 
     depends_on:
       - mongo
       - redis
+    restart: unless-stopped 
 
   app:
-    image: todo-front-dev
-    volumes:
-      - ./todo-frontend:/usr/src/app
-    environment:
-      - VITE_BACKEND_URL=http://localhost:8080/api
+    image: todo-frontend-prod 
+    restart: unless-stopped
 
   nginx:
     image: nginx:1.20.1
     volumes:
-      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro 
     ports:
-      - 8080:80
+      - 80:80 
     depends_on:
       - app
       - server
+    restart: unless-stopped
