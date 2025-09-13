@@ -1,0 +1,32 @@
+
+services:
+  backend:
+    image: bloglist-backend-prod
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    depends_on:
+      - frontend
+
+  frontend:
+    image: bloglist-frontend-prod
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
